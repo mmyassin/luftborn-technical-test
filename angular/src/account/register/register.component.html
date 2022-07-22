@@ -1,0 +1,85 @@
+﻿<div>
+  <h4 class="text-center mb-3">{{ "Register" }}</h4>
+  <form autocomplete="off" #registerForm="ngForm" (ngSubmit)="save()">
+    <div class="form-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        name="name"
+        placeholder="{{ 'Name' }}"
+        required
+        maxlength="64"
+        [(ngModel)]="model.name"
+        #nameModel="ngModel"
+        #nameEl
+      />
+    </div>
+    <div class="form-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        name="surname"
+        placeholder="{{ 'Surname' }}"
+        required
+        maxlength="64"
+        [(ngModel)]="model.surname"
+        #surnameModel="ngModel"
+        #surnameEl
+      />
+    </div>
+    <div class="form-group mb-3">
+      <input
+        type="email"
+        class="form-control"
+        name="emailAddress"
+        placeholder="{{ 'Email Address' }}"
+        required
+        maxlength="256"
+        pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{1,})+$"
+        [(ngModel)]="model.emailAddress"
+        #emailAddressModel="ngModel"
+        #emailAddressEl
+      />
+    </div>
+    <div class="form-group mb-3">
+      <input
+        type="email"
+        class="form-control"
+        name="userName"
+        placeholder=" {{ 'User Name' }}"
+        required
+        maxlength="32"
+        [(ngModel)]="model.userName"
+        #userNameModel="ngModel"
+        #userNameEl
+      />
+    </div>
+    <div class="form-group mb-3">
+      <input
+        type="password"
+        class="form-control"
+        name="password"
+        placeholder="{{ 'Password' }}"
+        [(ngModel)]="model.password"
+        required
+        maxlength="32"
+        #passwordModel="ngModel"
+        #passwordEl
+      />
+    </div>
+    <div class="d-flex justify-content-between">
+      <button
+        type="button"
+        class="btn btn-default"
+        [disabled]="saving"
+        [routerLink]="['../login']">
+        {{ "Back" }}
+      </button>
+      <button type="submit"
+        class="btn btn-primary btn-block"
+        [disabled]="!registerForm.form.valid || saving">
+        {{ "Register" }}
+      </button>
+    </div>
+  </form>
+</div>

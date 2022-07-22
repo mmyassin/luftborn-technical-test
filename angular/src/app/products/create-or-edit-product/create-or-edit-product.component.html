@@ -1,0 +1,42 @@
+<h4 *ngIf="!productId">Create a new Product</h4>
+<h4 *ngIf="productId">Edit Product #{{productId}} {{product.name}}</h4>
+
+<div class="card">
+  <form autocomplete="off" #productForm="ngForm" (ngSubmit)="save()">
+    <div class="card-body">
+      <div class="form-group mb-3">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" class="form-control" [(ngModel)]="product.name" required>
+      </div>
+      <div class="form-group mb-3">
+        <label for="description">Description</label>
+        <input type="text" name="description" id="description" class="form-control" [(ngModel)]="product.description"
+               required>
+      </div>
+      <div class="form-group mb-3">
+        <label for="availableQuantities">Available Quantities</label>
+        <input type="number" name="availableQuantities" min="1" step="1" id="availableQuantities" class="form-control"
+               [(ngModel)]="product.availableQuantities" required>
+      </div>
+      <div class="form-group mb-3">
+        <div class="form-check">
+          <input type="checkbox" name="isActive" id="isActive" class="form-check-input" [(ngModel)]="product.isActive">
+          <label for="isActive" class="form-check-label">Active</label>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+
+      <button type="submit"
+              class="btn btn-sm btn-primary me-1"
+              [disabled]="!productForm.form.valid || saving">
+        Save
+      </button>
+      <a class="btn btn-sm btn-secondary" [routerLink]="['/app/products']">Back</a>
+    </div>
+  </form>
+</div>
+
+
+
+

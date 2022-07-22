@@ -1,0 +1,29 @@
+<div class="d-flex justify-content-between mb-3">
+  <h4>Products</h4>
+  <a class="btn btn-success" [routerLink]="['create']">Create new product</a>
+</div>
+<table class="table table-bordered table-hover">
+  <thead>
+  <tr>
+    <td>Name</td>
+    <td>Description</td>
+    <td>Available Quantities</td>
+    <td>Is Active</td>
+    <td>Actions</td>
+  </tr>
+  </thead>
+  <tbody *ngIf="products">
+  <tr *ngFor="let product of products">
+    <td>{{product.name}}</td>
+    <td>{{product.description}}</td>
+    <td>{{product.availableQuantities}}</td>
+    <td>{{product.isActive}}</td>
+    <td>
+      <div class="d-flex align-items-stretch">
+        <a class="btn btn-sm btn-primary me-1" [routerLink]="['edit', product.id]">Edit</a>
+        <button class="btn btn-sm btn-danger" (click)="deleteProduct(product.id)">Delete</button>
+      </div>
+    </td>
+  </tr>
+  </tbody>
+</table>
